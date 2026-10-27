@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pookie Singh Cafe | Aesthetic Bistro & Bakery • Koramangala</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Sacramento&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pookie: {
+                            50: '#fff5f7',
+                            100: '#fce4ec',
+                            200: '#f8bbd0',
+                            300: '#f48fb1',
+                            400: '#f06292',
+                            500: '#ec407a',
+                            600: '#d81b60',
+                        },
+                        cream: {
+                            50: '#fdfbf7',
+                            100: '#f7f2ea',
+                            200: '#efe6d8',
+                            300: '#e3d3be',
+                        },
+                        mocha: {
+                            500: '#6f4e37',
+                            700: '#4a3222',
+                            800: '#322115',
+                            900: '#21140b',
+                        },
+                        rosewood: '#884a39',
+                        champagne: '#f7e7ce',
+                    },
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        cursive: ['Sacramento', 'cursive'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(253, 251, 247, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(248, 187, 208, 0.3);
+        }
+        .glass-dark {
+            background: rgba(33, 20, 11, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(248, 187, 208, 0.2);
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(33,20,11,0.3) 0%, rgba(33,20,11,0.75) 100%);
+        }
+        /* Sound Visualizer Equalizer Bar */
+        .eq-bar {
+            width: 3px;
+            background-color: #f48fb1;
+            border-radius: 3px;
+            animation: bounce 1.2s ease-in-out infinite alternate;
+        }
+        .eq-bar:nth-child(1) { height: 16px; animation-delay: 0.1s; }
+        .eq-bar:nth-child(2) { height: 24px; animation-delay: 0.3s; }
+        .eq-bar:nth-child(3) { height: 12px; animation-delay: 0.5s; }
+        .eq-bar:nth-child(4) { height: 20px; animation-delay: 0.2s; }
+
+        @keyframes bounce {
+            0% { transform: scaleY(0.3); }
+            100% { transform: scaleY(1.1); }
+        }
+        .paused .eq-bar {
+            animation-play-state: paused;
+            height: 4px !important;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fdfbf7;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #f48fb1;
+            border-radius: 99px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ec407a;
+        }
+    </style>
+</head>
+<body class="bg-cream-50 text-mocha-900 font-sans antialiased selection:bg-pookie-200 selection:text-mocha-900">
+
+    <!-- HEADER / NAVIGATION -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-40 transition-all duration-300 py-4 px-6 md:px-12">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <span class="w-11 h-11 rounded-full bg-gradient-to-tr from-pookie-400 to-pookie-200 text-mocha-900 flex items-center justify-center text-xl font-bold font-serif shadow-md group-hover:scale-105 transition-transform">
+                    P
+                </span>
+                <div>
+                    <span class="font-serif text-2xl font-extrabold tracking-wider text-cream-50 group-hover:text-pookie-200 transition-colors block leading-tight">
+                        POOKIE SINGH
+                    </span>
+                    <span class="text-[10px] tracking-widest text-pookie-100 uppercase font-medium block">
+                        Aesthetic Bistro & Cafe • Koramangala
+                    </span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <div class="hidden md:flex items-center gap-8 text-cream-50 font-medium text-sm tracking-wide">
+                <a href="#home" class="hover:text-pookie-200 transition-colors">Home</a>
+                <a href="#about" class="hover:text-pookie-200 transition-colors">Our Story</a>
+                <a href="#menu" class="hover:text-pookie-200 transition-colors">Menu & Pricing</a>
+                <a href="#ambience" class="hover:text-pookie-200 transition-colors">Ambience</a>
+                <a href="#reviews" class="hover:text-pookie-200 transition-colors">Reviews</a>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="hidden md:flex items-center gap-4">
+                <button onclick="toggleCartModal()" class="relative p-2.5 text-cream-50 hover:text-pookie-200 transition-colors">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-pookie-400 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md">0</span>
+                </button>
+                <button onclick="openReservationModal()" class="bg-gradient-to-r from-pookie-400 to-pookie-500 hover:from-pookie-500 hover:to-pookie-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                    Reserve Table
+                </button>
+            </div>
+
+            <!-- Mobile Controls -->
+            <div class="flex items-center gap-3 md:hidden">
+                <button onclick="toggleCartModal()" class="relative p-2 text-cream-50">
+                    <i class="fa-solid fa-bag-shopping text-xl"></i>
+                    <span id="cart-count-mobile" class="absolute -top-1 -right-1 bg-pookie-400 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+                </button>
+                <button id="mobile-menu-btn" class="text-cream-50 text-2xl focus:outline-none">
+                    <i class="fa-solid fa-bars-staggered"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-mocha-900/95 backdrop-blur-md text-cream-50 py-6 px-8 border-b border-mocha-700 flex flex-col gap-4 shadow-xl">
+            <a href="#home" onclick="toggleMobileMenu()" class="text-lg py-2 hover:text-pookie-200 border-b border-mocha-800">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="text-lg py-2 hover:text-pookie-200 border-b border-mocha-800">Our Story</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="text-lg py-2 hover:text-pookie-200 border-b border-mocha-800">Menu & Pricing</a>
+            <a href="#ambience" onclick="toggleMobileMenu()" class="text-lg py-2 hover:text-pookie-200 border-b border-mocha-800">Ambience</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="text-lg py-2 hover:text-pookie-200 border-b border-mocha-800">Reviews</a>
+            <button onclick="toggleMobileMenu(); openReservationModal();" class="mt-2 w-full bg-pookie-400 text-white py-3 rounded-xl font-semibold text-center">
+                Reserve Table
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=1920" 
+                 alt="Pookie Singh Cafe Interior" 
+                 class="w-full h-full object-cover"
+                 onerror="this.src='https://placehold.co/1920x1080/4a3222/FFF?text=Pookie+Singh+Cafe'">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 max-w-5xl mx-auto text-center text-cream-50 flex flex-col items-center">
+            <div class="inline-flex items-center gap-2 bg-pookie-200/20 backdrop-blur-md px-5 py-2 rounded-full border border-pookie-200/40 text-pookie-100 text-xs md:text-sm font-medium mb-6">
+                <i class="fa-solid fa-sparkles text-pookie-200"></i>
+                <span>Welcome to Pookie Singh Cafe • Koramangala 4th Block</span>
+            </div>
+
+            <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-6 leading-tight">
+                Cute Aesthetics, <br class="hidden sm:inline">
+                <span class="font-cursive text-pookie-200 text-5xl sm:text-7xl md:text-8xl font-normal capitalize">Artisanal Coffee & Bakes</span>
+            </h1>
+
+            <p class="max-w-2xl text-base md:text-xl text-cream-100/90 font-light mb-10 leading-relaxed">
+                Step into Bengaluru’s prettiest pastel bistro. Enjoy specialty brews, hand-piped bakery treats, warm lo-fi acoustics, and picture-perfect corners.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+                <a href="#menu" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-pookie-400 to-pookie-500 hover:from-pookie-500 hover:to-pookie-600 text-white rounded-full font-semibold shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-1 text-center">
+                    Explore Menu & Pricing <i class="fa-solid fa-arrow-right-long ml-2"></i>
+                </a>
+                <button onclick="openReservationModal()" class="w-full sm:w-auto px-8 py-4 bg-cream-50/10 hover:bg-cream-50/20 text-cream-50 border border-cream-50/30 backdrop-blur-md rounded-full font-semibold transition-all transform hover:-translate-y-1">
+                    Book a Table
+                </button>
+            </div>
+
+            <!-- Floating Info Cards -->
+            <div class="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl">
+                <div class="glass-dark p-5 rounded-2xl flex items-center gap-4 text-left">
+                    <div class="w-12 h-12 rounded-xl bg-pookie-400/20 text-pookie-200 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-mug-hot"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-cream-50">Specialty Arabica</h4>
+                        <p class="text-xs text-cream-200 font-light">Custom artisanal roasts brewed fresh</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-2xl flex items-center gap-4 text-left">
+                    <div class="w-12 h-12 rounded-xl bg-pookie-400/20 text-pookie-200 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-cream-50">Pastel Aesthetics</h4>
+                        <p class="text-xs text-cream-200 font-light">Sunlit patio & cozy corners</p>
+                    </div>
+                </div>
+
+                <div class="glass-dark p-5 rounded-2xl flex items-center gap-4 text-left">
+                    <div class="w-12 h-12 rounded-xl bg-pookie-400/20 text-pookie-200 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-stroopwafel"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-serif text-lg font-bold text-cream-50">Fresh Daily Bakes</h4>
+                        <p class="text-xs text-cream-200 font-light">Flaky croissants & artisan cakes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="py-24 px-6 bg-pookie-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Composite Image -->
+            <div class="relative">
+                <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&q=80&w=1000" 
+                         alt="Rose Cappuccino" 
+                         class="w-full h-[460px] object-cover hover:scale-105 transition-transform duration-700"
+                         onerror="this.src='https://placehold.co/800x600/f8bbd0/4a3222?text=Rose+Latte+Art'">
+                </div>
+                <div class="absolute -bottom-8 -right-6 z-20 w-3/5 rounded-2xl overflow-hidden shadow-2xl border-4 border-white hidden sm:block">
+                    <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600" 
+                         alt="Fresh Croissants" 
+                         class="w-full h-48 object-cover hover:scale-105 transition-transform duration-700">
+                </div>
+                <div class="absolute -top-6 -left-6 z-20 bg-mocha-900 text-pookie-200 p-4 rounded-2xl shadow-xl flex items-center gap-3">
+                    <i class="fa-solid fa-crown text-2xl text-pookie-300"></i>
+                    <div>
+                        <p class="font-serif font-bold text-sm text-cream-50">Koramangala Favorite</p>
+                        <p class="text-[10px] text-cream-300">Top Rated Aesthetic Bistro</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Content -->
+            <div>
+                <span class="text-pookie-500 font-bold tracking-widest text-xs uppercase block mb-2">Our Story • Pookie Singh Cafe</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-mocha-900 mb-6 leading-tight">
+                    Where Good Vibes, Warm Coffee & Cute Stories Meet.
+                </h2>
+                <p class="text-mocha-700 text-base md:text-lg mb-6 leading-relaxed font-light">
+                    Founded with a vision to create Bengaluru’s most comforting cafe experience, <strong>Pookie Singh Cafe</strong> combines soft pastel aesthetics, specialty coffee roasts, and mouth-watering desserts.
+                </p>
+                <p class="text-mocha-700/80 text-sm md:text-base mb-8 leading-relaxed font-light">
+                    Whether you're catching up with besties, spending a solo reading afternoon, or celebrating special moments, our cozy seating and signature recipes offer the ultimate sanctuary.
+                </p>
+
+                <div class="grid grid-cols-3 gap-6 pt-6 border-t border-pookie-200/60">
+                    <div>
+                        <span class="font-serif text-3xl md:text-4xl font-extrabold text-pookie-500 block">30+</span>
+                        <span class="text-[11px] text-mocha-800 font-semibold uppercase tracking-wider">Signature Items</span>
+                    </div>
+                    <div>
+                        <span class="font-serif text-3xl md:text-4xl font-extrabold text-mocha-700 block">100%</span>
+                        <span class="text-[11px] text-mocha-800 font-semibold uppercase tracking-wider">Arabica & Pure Butter</span>
+                    </div>
+                    <div>
+                        <span class="font-serif text-3xl md:text-4xl font-extrabold text-pookie-600 block">4.9★</span>
+                        <span class="text-[11px] text-mocha-800 font-semibold uppercase tracking-wider">Happy Reviews</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MENU & PRICE LIST SECTION -->
+    <section id="menu" class="py-24 px-6 bg-cream-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-pookie-500 font-bold tracking-widest text-xs uppercase block mb-2">Menu & Price List</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-extrabold text-mocha-900 mb-4">Our Artisanal Offerings</h2>
+                <p class="text-mocha-700 font-light text-base md:text-lg">
+                    Handcrafted beverages and gourmet bakes priced in INR (₹). Select any item to customize and add to your order.
+                </p>
+
+                <!-- Search & Filters Bar -->
+                <div class="mt-8 flex flex-col md:flex-row items-center gap-4 justify-between bg-white p-3 rounded-2xl border border-pookie-200 shadow-sm">
+                    <!-- Search Input -->
+                    <div class="relative w-full md:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-pookie-400 text-sm"></i>
+                        <input type="text" id="menu-search" oninput="handleSearch()" placeholder="Search coffee, boba, croissant..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-pookie-50 text-sm border-none focus:outline-none focus:ring-2 focus:ring-pookie-300">
+                    </div>
+
+                    <!-- Category Tabs -->
+                    <div class="flex flex-wrap items-center justify-center gap-2 w-full md:w-auto" id="menu-tabs">
+                        <button onclick="filterMenu('all')" class="tab-btn active px-4 py-2 rounded-xl text-xs font-bold transition-all bg-pookie-500 text-white shadow-sm">All</button>
+                        <button onclick="filterMenu('coffee')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-cream-100 text-mocha-800 hover:bg-pookie-200">☕ Coffee</button>
+                        <button onclick="filterMenu('tea')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-cream-100 text-mocha-800 hover:bg-pookie-200">🍵 Tea & Boba</button>
+                        <button onclick="filterMenu('bakery')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-cream-100 text-mocha-800 hover:bg-pookie-200">🥐 Bakery</button>
+                        <button onclick="filterMenu('brunch')" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-cream-100 text-mocha-800 hover:bg-pookie-200">🥑 Brunch</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Grid -->
+            <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamically Rendered JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- AMBIENCE GALLERY -->
+    <section id="ambience" class="py-24 px-6 bg-mocha-900 text-cream-50 relative">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-pookie-300 font-bold tracking-widest text-xs uppercase block mb-2">Aesthetic Ambience</span>
+                <h2 class="font-serif text-4xl sm:text-5xl font-extrabold mb-4">Step Inside Pookie’s World</h2>
+                <p class="text-cream-200 font-light text-sm md:text-base">
+                    Designed with velvet pink corners, fairy-lit sunrooms, and cozy floral nooks for unforgettable photos and memories.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-mocha-700">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&q=80&w=800" 
+                         alt="Velvet Seating Lounge" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mocha-900/90 via-transparent p-6 flex flex-col justify-end">
+                        <span class="text-pookie-300 text-xs uppercase font-bold tracking-wider">Velvet Lounge</span>
+                        <h4 class="font-serif text-xl font-bold text-white">Cozy Plush Sofa Seating</h4>
+                    </div>
+                </div>
+
+                <div class="group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-mocha-700">
+                    <img src="https://images.unsplash.com/photo-1521017432531-fbd92d768814?auto=format&fit=crop&q=80&w=800" 
+                         alt="Sunlit Courtyard" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mocha-900/90 via-transparent p-6 flex flex-col justify-end">
+                        <span class="text-pookie-300 text-xs uppercase font-bold tracking-wider">Sunroom Patio</span>
+                        <h4 class="font-serif text-xl font-bold text-white">Glasshouse Outdoor Garden</h4>
+                    </div>
+                </div>
+
+                <div class="group relative h-80 rounded-3xl overflow-hidden shadow-lg border border-mocha-700">
+                    <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=800" 
+                         alt="Espresso Bar" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute inset-0 bg-gradient-to-t from-mocha-900/90 via-transparent p-6 flex flex-col justify-end">
+                        <span class="text-pookie-300 text-xs uppercase font-bold tracking-wider">Artisanal Bar</span>
+                        <h4 class="font-serif text-xl font-bold text-white">Live Pour-Over Station</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS -->
+    <section id="reviews" class="py-24 px-6 bg-pookie-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-pookie-500 font-bold tracking-widest text-xs uppercase block mb-2">Customer Love</span>
+                <h2 class="font-serif text-4xl font-extrabold text-mocha-900">Loved by Coffee Lovers & Photographers</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-pookie-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-mocha-800 italic font-light leading-relaxed mb-6">
+                            "Pookie Singh Cafe is easily the prettiest cafe in Koramangala! Their Rose Cardamom Cappuccino and Pistachio Tart are absolute perfection."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-pookie-100">
+                        <div class="w-11 h-11 rounded-full bg-pookie-200 text-mocha-900 font-bold flex items-center justify-center font-serif">S</div>
+                        <div>
+                            <h4 class="font-serif font-bold text-mocha-900">Sneha Rao</h4>
+                            <span class="text-xs text-mocha-500">Bangalore Blogger</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-pookie-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-mocha-800 italic font-light leading-relaxed mb-6">
+                            "The soothing lo-fi playlist, aesthetic pastel interior, and Avocado Poached Egg toast made my weekend breakfast so peaceful!"
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-pookie-100">
+                        <div class="w-11 h-11 rounded-full bg-mocha-700 text-white font-bold flex items-center justify-center font-serif">R</div>
+                        <div>
+                            <h4 class="font-serif font-bold text-mocha-900">Rohan Kapoor</h4>
+                            <span class="text-xs text-mocha-500">Regular Visitor</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-3xl shadow-md border border-pookie-100 flex flex-col justify-between">
+                    <div>
+                        <div class="flex text-amber-400 gap-1 mb-4 text-sm">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </div>
+                        <p class="text-mocha-800 italic font-light leading-relaxed mb-6">
+                            "The staff are so courteous! We booked a table in the Sunlit Patio for a birthday date and the setup was magical."
+                        </p>
+                    </div>
+                    <div class="flex items-center gap-4 pt-4 border-t border-pookie-100">
+                        <div class="w-11 h-11 rounded-full bg-pookie-400 text-white font-bold flex items-center justify-center font-serif">A</div>
+                        <div>
+                            <h4 class="font-serif font-bold text-mocha-900">Ananya Verma</h4>
+                            <span class="text-xs text-mocha-500">UI Designer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-mocha-900 text-cream-100 pt-20 pb-12 px-6 border-t border-mocha-800">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div>
+                <a href="#" class="flex items-center gap-3 mb-6">
+                    <span class="w-10 h-10 rounded-full bg-pookie-400 text-white flex items-center justify-center text-xl font-serif font-bold">P</span>
+                    <div>
+                        <span class="font-serif text-2xl font-bold tracking-wider text-cream-50 block leading-tight">POOKIE SINGH</span>
+                        <span class="text-[10px] tracking-widest text-pookie-300 uppercase font-light block">Bistro & Cafe</span>
+                    </div>
+                </a>
+                <p class="text-cream-200/80 text-sm leading-relaxed mb-6 font-light">
+                    Koramangala’s aesthetic bistro crafting delicious specialty coffees, artisanal pastries, and unforgettable moments.
+                </p>
+                <div class="flex items-center gap-4 text-pookie-200">
+                    <a href="#" class="w-9 h-9 rounded-full bg-mocha-800 flex items-center justify-center hover:bg-pookie-400 hover:text-white transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-mocha-800 flex items-center justify-center hover:bg-pookie-400 hover:text-white transition-colors"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-mocha-800 flex items-center justify-center hover:bg-pookie-400 hover:text-white transition-colors"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg font-bold text-pookie-300 mb-6">Quick Links</h4>
+                <ul class="space-y-3 text-sm text-cream-200 font-light">
+                    <li><a href="#home" class="hover:text-pookie-300 transition-colors">Home</a></li>
+                    <li><a href="#about" class="hover:text-pookie-300 transition-colors">About Us</a></li>
+                    <li><a href="#menu" class="hover:text-pookie-300 transition-colors">Menu & Pricing</a></li>
+                    <li><a href="#ambience" class="hover:text-pookie-300 transition-colors">Ambience Gallery</a></li>
+                    <li><a href="javascript:void(0)" onclick="openReservationModal()" class="hover:text-pookie-300 transition-colors">Book a Table</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg font-bold text-pookie-300 mb-6">Contact & Timing</h4>
+                <div class="space-y-4 text-sm text-cream-200 font-light">
+                    <div class="flex items-start gap-3">
+                        <i class="fa-regular fa-clock text-pookie-400 mt-1"></i>
+                        <div>
+                            <p class="text-cream-50 font-medium">Mon - Sun:</p>
+                            <p>8:00 AM – 11:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-phone text-pookie-400 mt-1"></i>
+                        <p>+91 98765 43210</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i class="fa-solid fa-envelope text-pookie-400 mt-1"></i>
+                        <p>hello@pookiesinghcafe.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="font-serif text-lg font-bold text-pookie-300 mb-6">Location</h4>
+                <div class="bg-mocha-800 p-4 rounded-2xl border border-mocha-700">
+                    <p class="text-xs text-cream-200 mb-3 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-pookie-400"></i>
+                        88, 4th Block, 80 Feet Road, Koramangala, Bengaluru
+                    </p>
+                    <div class="w-full h-24 rounded-lg overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=600" 
+                             alt="Koramangala Map" 
+                             class="w-full h-full object-cover opacity-60">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span class="bg-pookie-500 text-white text-xs px-3 py-1.5 rounded-full shadow-lg font-semibold">
+                                View Map Location
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto pt-8 border-t border-mocha-800 text-center text-xs text-cream-300/60 font-light flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>© 2026 Pookie Singh Cafe. All rights reserved.</p>
+            <p>Made with ❤️ in Koramangala, Bengaluru</p>
+        </div>
+    </footer>
+
+    <!-- FLOATING CAFE MUSIC PLAYER -->
+    <div class="fixed bottom-6 left-6 z-40">
+        <div id="music-player-card" class="glass-dark p-3.5 rounded-2xl shadow-2xl flex items-center gap-3.5 border border-pookie-200/30 text-cream-50 transition-all">
+            <!-- Audio Equalizer Bars -->
+            <div id="eq-container" class="flex items-end gap-1 px-1 h-6 paused">
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+                <div class="eq-bar"></div>
+            </div>
+
+            <!-- Track Info -->
+            <div class="w-32">
+                <p id="track-title" class="text-xs font-bold text-pookie-100 truncate">Cozy Lo-Fi Beats</p>
+                <p id="track-status" class="text-[10px] text-cream-300 truncate">Relaxing Ambient</p>
+            </div>
+
+            <!-- Stream Switcher Dropdown -->
+            <select id="stream-select" onchange="changeTrack(this.value)" class="bg-mocha-800 text-[11px] text-cream-100 py-1 px-2 rounded-lg border border-mocha-700 focus:outline-none">
+                <option value="lofi">Cozy Lo-Fi</option>
+                <option value="jazz">Velvet Jazz</option>
+                <option value="acoustic">Soft Acoustic</option>
+            </select>
+
+            <!-- Play/Pause Button -->
+            <button id="play-btn" onclick="toggleAudio()" class="w-8 h-8 rounded-full bg-pookie-400 hover:bg-pookie-500 text-white flex items-center justify-center text-xs shadow-md transition-all">
+                <i class="fa-solid fa-play"></i>
+            </button>
+
+            <!-- Volume Control -->
+            <input type="range" id="volume-control" min="0" max="1" step="0.05" value="0.5" oninput="setVolume(this.value)" class="w-16 accent-pookie-400 cursor-pointer hidden sm:block">
+        </div>
+
+        <!-- Audio Element with Fallback Streams -->
+        <audio id="cafe-audio" loop preload="none">
+            <source src="https://stream.zeno.fm/f3wvbbqmdg8uv" type="audio/mpeg">
+        </audio>
+    </div>
+
+    <!-- ITEM CUSTOMIZATION MODAL -->
+    <div id="custom-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-mocha-900/70 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-cream-50 rounded-3xl max-w-md w-full p-6 shadow-2xl border border-pookie-200 relative">
+            <button onclick="closeCustomModal()" class="absolute top-5 right-5 text-mocha-700 hover:text-pookie-500 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-4 mb-4">
+                <img id="modal-item-img" src="" class="w-16 h-16 rounded-2xl object-cover shadow">
+                <div>
+                    <h3 id="modal-item-name" class="font-serif text-xl font-bold text-mocha-900">Item Name</h3>
+                    <p id="modal-item-price" class="text-pookie-500 font-bold text-sm">₹0</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 my-4">
+                <!-- Milk Choice -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-mocha-800 mb-2">Milk Choice</label>
+                    <div class="grid grid-cols-3 gap-2 text-xs">
+                        <label class="border border-pookie-200 p-2 rounded-xl text-center cursor-pointer bg-white hover:bg-pookie-100">
+                            <input type="radio" name="milk" value="Whole Milk" checked class="hidden accent-pookie-500">
+                            <span>Whole Milk</span>
+                        </label>
+                        <label class="border border-pookie-200 p-2 rounded-xl text-center cursor-pointer bg-white hover:bg-pookie-100">
+                            <input type="radio" name="milk" value="Oat Milk (+₹40)" class="hidden accent-pookie-500">
+                            <span>Oat Milk (+₹40)</span>
+                        </label>
+                        <label class="border border-pookie-200 p-2 rounded-xl text-center cursor-pointer bg-white hover:bg-pookie-100">
+                            <input type="radio" name="milk" value="Almond Milk (+₹40)" class="hidden accent-pookie-500">
+                            <span>Almond (+₹40)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Sweetness Level -->
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-mocha-800 mb-2">Sweetness</label>
+                    <select id="sweetness-select" class="w-full px-3 py-2 rounded-xl bg-white border border-pookie-200 text-xs focus:outline-none">
+                        <option value="100% Sweetness">Normal (100%)</option>
+                        <option value="50% Sweetness">Less Sweet (50%)</option>
+                        <option value="No Sugar">Unsweetened (0%)</option>
+                    </select>
+                </div>
+            </div>
+
+            <button id="confirm-add-btn" class="w-full py-3 bg-gradient-to-r from-pookie-400 to-pookie-500 text-white font-semibold rounded-2xl shadow-lg hover:from-pookie-500 hover:to-pookie-600 transition-colors">
+                Add to Order
+            </button>
+        </div>
+    </div>
+
+    <!-- TABLE RESERVATION MODAL -->
+    <div id="reservation-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-mocha-900/80 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-cream-50 rounded-3xl max-w-lg w-full p-8 shadow-2xl border border-pookie-200 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeReservationModal()" class="absolute top-6 right-6 text-mocha-800 hover:text-pookie-500 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center mb-6">
+                <span class="w-12 h-12 rounded-full bg-pookie-200/50 text-pookie-500 flex items-center justify-center text-2xl mx-auto mb-3">
+                    <i class="fa-solid fa-utensils"></i>
+                </span>
+                <h3 class="font-serif text-3xl font-bold text-mocha-900">Book Your Table</h3>
+                <p class="text-mocha-700 text-sm font-light mt-1">Reserve your cozy spot at Koramangala</p>
+            </div>
+
+            <form onsubmit="handleReservationSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-mocha-800 mb-1">Your Full Name</label>
+                    <input type="text" required placeholder="Pookie Sharma" class="w-full px-4 py-3 rounded-xl bg-white border border-pookie-200 text-sm focus:outline-none focus:border-pookie-400">
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-mocha-800 mb-1">Phone Number</label>
+                        <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-white border border-pookie-200 text-sm focus:outline-none focus:border-pookie-400">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-mocha-800 mb-1">Guests</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-white border border-pookie-200 text-sm focus:outline-none">
+                            <option>1 Person (Solo)</option>
+                            <option selected>2 Guests (Cute Date)</option>
+                            <option>3-4 Friends</option>
+                            <option>5+ Family Group</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-mocha-800 mb-1">Date</label>
+                        <input type="date" required class="w-full px-4 py-3 rounded-xl bg-white border border-pookie-200 text-sm focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-mocha-800 mb-1">Seating Preference</label>
+                        <select class="w-full px-4 py-3 rounded-xl bg-white border border-pookie-200 text-sm focus:outline-none">
+                            <option>Sunlit Patio</option>
+                            <option>Velvet Lounge</option>
+                            <option>Glasshouse Garden</option>
+                            <option>Espresso Bar Counter</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-pookie-400 to-pookie-500 text-white font-semibold rounded-2xl shadow-lg hover:from-pookie-500 hover:to-pookie-600 transition-colors mt-2">
+                    Confirm Booking
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SIDE CART DRAWER -->
+    <div id="cart-modal" class="fixed inset-0 z-50 flex items-center justify-end bg-mocha-900/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-cream-50 w-full max-w-md h-full shadow-2xl p-6 flex flex-col justify-between transform translate-x-full transition-transform duration-300">
+            <div>
+                <div class="flex items-center justify-between border-b border-pookie-200 pb-4 mb-6">
+                    <h3 class="font-serif text-2xl font-bold text-mocha-900 flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-pookie-400 text-xl"></i> Your Order
+                    </h3>
+                    <button onclick="toggleCartModal()" class="text-mocha-800 hover:text-pookie-500 text-xl">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div id="cart-items" class="space-y-4 max-h-[55vh] overflow-y-auto pr-2">
+                    <!-- Dynamic Cart Content -->
+                </div>
+            </div>
+
+            <!-- Price Breakdown & Checkout -->
+            <div class="border-t border-pookie-200 pt-4 bg-cream-50">
+                <div class="space-y-2 mb-4 text-sm text-mocha-800">
+                    <div class="flex justify-between">
+                        <span>Subtotal:</span>
+                        <span id="cart-subtotal" class="font-semibold">₹0</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-mocha-500">
+                        <span>GST & Service Charge (5%):</span>
+                        <span id="cart-tax">₹0</span>
+                    </div>
+                    <div class="flex justify-between items-center text-lg font-bold border-t border-pookie-200 pt-2 text-mocha-900">
+                        <span>Total Pay:</span>
+                        <span id="cart-total" class="text-pookie-500">₹0</span>
+                    </div>
+                </div>
+                <button onclick="placeOrder()" class="w-full py-4 bg-gradient-to-r from-pookie-400 to-pookie-500 text-white font-semibold rounded-2xl shadow-lg hover:from-pookie-500 hover:to-pookie-600 transition-colors">
+                    Place Order Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-mocha-900 text-cream-50 px-6 py-3.5 rounded-2xl shadow-2xl border border-pookie-300/40 flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300">
+        <i class="fa-solid fa-heart text-pookie-300 text-lg"></i>
+        <span id="toast-msg" class="text-sm font-medium">Added to cart!</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Menu Items Data with INR Prices
+        const menuData = [
+            {
+                id: 1,
+                name: "Pookie's Biscoff Latte",
+                category: "coffee",
+                price: 290,
+                desc: "Lotus Biscoff cookie butter layered with double espresso & velvety steam foam.",
+                image: "https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&q=80&w=600",
+                badge: "Bestseller"
+            },
+            {
+                id: 2,
+                name: "Rose Cardamom Cappuccino",
+                category: "coffee",
+                price: 270,
+                desc: "Subtle organic rose water and crushed cardamom infused with Arabica espresso.",
+                image: "https://images.unsplash.com/photo-1534778101976-62847782c213?auto=format&fit=crop&q=80&w=600",
+                badge: "Signature"
+            },
+            {
+                id: 3,
+                name: "Hazelnut Cold Brew Foam",
+                category: "coffee",
+                price: 310,
+                desc: "16-hour steep cold brew topped with aerated hazelnut sweet cream.",
+                image: "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 4,
+                name: "Iced Caramel Macchiato",
+                category: "coffee",
+                price: 280,
+                desc: "Vanilla syrup, chilled milk, ice, caramel drizzle, and espresso shots.",
+                image: "https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 5,
+                name: "Pink Matcha Oat Latte",
+                category: "tea",
+                price: 320,
+                desc: "Ceremonial Uji Japanese green tea with beetroot pink oat milk foam.",
+                image: "https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&q=80&w=600",
+                badge: "Must Try"
+            },
+            {
+                id: 6,
+                name: "Taro Boba Milk Tea",
+                category: "tea",
+                price: 340,
+                desc: "Creamy purple taro root milk tea served with chewy brown sugar tapioca pearls.",
+                image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 7,
+                name: "Pistachio Cream Tart",
+                category: "bakery",
+                price: 320,
+                desc: "Flaky tart shell filled with white chocolate pistachio ganache & crushed nuts.",
+                image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600",
+                badge: "Chef Special"
+            },
+            {
+                id: 8,
+                name: "Butter Flaky Croissant",
+                category: "bakery",
+                price: 190,
+                desc: "Authentic French butter croissant baked fresh every single morning.",
+                image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600"
+            },
+            {
+                id: 9,
+                name: "Avocado & Poached Egg Toast",
+                category: "brunch",
+                price: 380,
+                desc: "Smash Hass avocado on artisanal sourdough topped with farm poached eggs.",
+                image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=600",
+                badge: "Popular Brunch"
+            },
+            {
+                id: 10,
+                name: "Truffle Mushroom Panini",
+                category: "brunch",
+                price: 420,
+                desc: "Sautéed wild button mushrooms, melted fontina cheese & black truffle butter.",
+                image: "https://images.unsplash.com/photo-1621996346565-e3d5d6281292?auto=format&fit=crop&q=80&w=600"
+            }
+        ];
+
+        let cart = [];
+        let selectedItemForCustom = null;
+
+        // Render Menu Cards
+        function renderMenu(items) {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = items.map(item => `
+                <div class="bg-white rounded-3xl overflow-hidden border border-pookie-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div class="relative h-52 overflow-hidden">
+                        <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        ${item.badge ? `<span class="absolute top-4 left-4 bg-pookie-400 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full shadow-md">${item.badge}</span>` : ''}
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <h3 class="font-serif text-lg font-bold text-mocha-900 group-hover:text-pookie-500 transition-colors">${item.name}</h3>
+                                <span class="font-serif text-lg font-extrabold text-pookie-500">₹${item.price}</span>
+                            </div>
+                            <p class="text-mocha-700/80 text-xs font-light leading-relaxed mb-6">${item.desc}</p>
+                        </div>
+                        <button onclick="openCustomModal(${item.id})" class="w-full py-3 bg-pookie-50 hover:bg-pookie-400 hover:text-white text-mocha-900 font-semibold rounded-2xl transition-all text-xs flex items-center justify-center gap-2 border border-pookie-100">
+                            <i class="fa-solid fa-plus text-[10px]"></i> Customize & Add
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter Logic
+        function filterMenu(category) {
+            const buttons = document.querySelectorAll('#menu-tabs .tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-pookie-500', 'text-white');
+                btn.classList.add('bg-cream-100', 'text-mocha-800');
+            });
+            event.target.classList.remove('bg-cream-100', 'text-mocha-800');
+            event.target.classList.add('bg-pookie-500', 'text-white');
+
+            if (category === 'all') {
+                renderMenu(menuData);
+            } else {
+                renderMenu(menuData.filter(i => i.category === category));
+            }
+        }
+
+        // Live Search Handler
+        function handleSearch() {
+            const query = document.getElementById('menu-search').value.toLowerCase();
+            const filtered = menuData.filter(item => 
+                item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query)
+            );
+            renderMenu(filtered);
+        }
+
+        // Item Customization Modal
+        function openCustomModal(id) {
+            selectedItemForCustom = menuData.find(i => i.id === id);
+            document.getElementById('modal-item-img').src = selectedItemForCustom.image;
+            document.getElementById('modal-item-name').innerText = selectedItemForCustom.name;
+            document.getElementById('modal-item-price').innerText = `₹${selectedItemForCustom.price}`;
+
+            const modal = document.getElementById('custom-modal');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+
+            document.getElementById('confirm-add-btn').onclick = function() {
+                const milkOption = document.querySelector('input[name="milk"]:checked').value;
+                const sweetness = document.getElementById('sweetness-select').value;
+                addToCart(selectedItemForCustom, milkOption, sweetness);
+                closeCustomModal();
+            };
+        }
+
+        function closeCustomModal() {
+            document.getElementById('custom-modal').classList.add('pointer-events-none', 'opacity-0');
+        }
+
+        // Cart Management
+        function addToCart(item, milk, sweetness) {
+            let extraCost = milk.includes('+₹40') ? 40 : 0;
+            const cartItem = {
+                cartId: Date.now(),
+                id: item.id,
+                name: item.name,
+                price: item.price + extraCost,
+                image: item.image,
+                milk: milk,
+                sweetness: sweetness,
+                qty: 1
+            };
+            cart.push(cartItem);
+            updateCartUI();
+            showToast(`${item.name} added to cart! ✨`);
+        }
+
+        function updateCartUI() {
+            const totalQty = cart.reduce((acc, c) => acc + c.qty, 0);
+            document.getElementById('cart-count').innerText = totalQty;
+            document.getElementById('cart-count-mobile').innerText = totalQty;
+
+            const itemsContainer = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = `
+                    <div class="text-center py-12 text-mocha-500 font-light">
+                        <i class="fa-solid fa-mug-saucer text-4xl mb-3 text-pookie-200"></i>
+                        <p>Your order drawer is empty.</p>
+                    </div>
+                `;
+                document.getElementById('cart-subtotal').innerText = '₹0';
+                document.getElementById('cart-tax').innerText = '₹0';
+                document.getElementById('cart-total').innerText = '₹0';
+                return;
+            }
+
+            let subtotal = 0;
+            itemsContainer.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.qty;
+                subtotal += itemTotal;
+                return `
+                    <div class="flex items-center justify-between p-3 bg-white rounded-2xl border border-pookie-100 shadow-sm">
+                        <div class="flex items-center gap-3">
+                            <img src="${item.image}" class="w-12 h-12 rounded-xl object-cover">
+                            <div>
+                                <h4 class="font-serif font-bold text-mocha-900 text-xs">${item.name}</h4>
+                                <p class="text-[10px] text-mocha-500">${item.milk} • ${item.sweetness}</p>
+                                <span class="text-xs text-pookie-500 font-semibold">₹${item.price}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button onclick="removeCartItem(${item.cartId})" class="text-mocha-400 hover:text-red-500 text-xs px-2 py-1">
+                                <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            const tax = Math.round(subtotal * 0.05);
+            const finalTotal = subtotal + tax;
+
+            document.getElementById('cart-subtotal').innerText = `₹${subtotal}`;
+            document.getElementById('cart-tax').innerText = `₹${tax}`;
+            document.getElementById('cart-total').innerText = `₹${finalTotal}`;
+        }
+
+        function removeCartItem(cartId) {
+            cart = cart.filter(c => c.cartId !== cartId);
+            updateCartUI();
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            const drawer = modal.firstElementChild;
+            if (modal.classList.contains('pointer-events-none')) {
+                modal.classList.remove('pointer-events-none', 'opacity-0');
+                drawer.classList.remove('translate-x-full');
+            } else {
+                modal.classList.add('pointer-events-none', 'opacity-0');
+                drawer.classList.add('translate-x-full');
+            }
+        }
+
+        function placeOrder() {
+            if (cart.length === 0) {
+                showToast("Please add items to your cart first!");
+                return;
+            }
+            confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            cart = [];
+            updateCartUI();
+            toggleCartModal();
+            showToast("🎉 Order Placed! Prepare for cozy deliciousness.");
+        }
+
+        // Reservation Logic
+        function openReservationModal() {
+            const modal = document.getElementById('reservation-modal');
+            modal.classList.remove('pointer-events-none', 'opacity-0');
+        }
+
+        function closeReservationModal() {
+            document.getElementById('reservation-modal').classList.add('pointer-events-none', 'opacity-0');
+        }
+
+        function handleReservationSubmit(e) {
+            e.preventDefault();
+            closeReservationModal();
+            confetti({ particleCount: 80, spread: 60 });
+            showToast("💖 Table Booked! We can't wait to host you.");
+        }
+
+        // Toast Helper
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-msg').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // Music Player Stream Controller
+        const audio = document.getElementById('cafe-audio');
+        const playBtn = document.getElementById('play-btn');
+        const eqContainer = document.getElementById('eq-container');
+
+        const audioStreams = {
+            lofi: "https://stream.zeno.fm/f3wvbbqmdg8uv",
+            jazz: "https://stream.zeno.fm/90t41d4n348uv",
+            acoustic: "https://stream.zeno.fm/u280f580348uv"
+        };
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    playBtn.innerHTML = `<i class="fa-solid fa-pause"></i>`;
+                    eqContainer.classList.remove('paused');
+                }).catch(() => {
+                    showToast("Tap player to enable music playback");
+                });
+            } else {
+                audio.pause();
+                playBtn.innerHTML = `<i class="fa-solid fa-play"></i>`;
+                eqContainer.classList.add('paused');
+            }
+        }
+
+        function changeTrack(streamKey) {
+            audio.src = audioStreams[streamKey];
+            if (!audio.paused) {
+                audio.play();
+            }
+            showToast(`Switched to ${streamKey.toUpperCase()} Vibe 🎵`);
+        }
+
+        function setVolume(val) {
+            audio.volume = val;
+        }
+
+        // Navbar Scroll Styling
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-mocha-900/90', 'backdrop-blur-md', 'shadow-xl', 'py-3');
+                nav.classList.remove('py-4');
+            } else {
+                nav.classList.remove('bg-mocha-900/90', 'backdrop-blur-md', 'shadow-xl');
+                nav.classList.add('py-4');
+            }
+        });
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        document.getElementById('mobile-menu-btn').addEventListener('click', toggleMobileMenu);
+
+        // Render on Page Load
+        window.onload = function() {
+            renderMenu(menuData);
+        };
+    </script>
+</body>
+</html>
